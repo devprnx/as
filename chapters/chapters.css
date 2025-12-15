@@ -1500,39 +1500,129 @@
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - COMPREHENSIVE
    ============================================ */
 
 @media (max-width: 768px) {
+    /* Chapter Page General */
+    .chapter-page {
+        padding: 20px 15px;
+    }
+
+    .chapter-header {
+        padding: 20px 10px;
+    }
+
+    .chapter-title {
+        font-size: 2.5rem;
+    }
+
+    .chapter-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Phone/Chat Components */
     .phone-frame {
         width: 100%;
         max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .phone-container {
+        padding: 20px 10px;
+    }
+
+    .chat-messages {
+        max-height: 400px;
+    }
+
+    .message-bubble {
+        max-width: 85%;
+        font-size: 0.95rem;
     }
     
+    /* Notebook/Childhood */
     .notebook {
         padding: 30px 20px;
+        margin: 20px 10px;
+    }
+
+    .notebook::before {
+        left: 30px;
+    }
+
+    .handwriting {
+        font-size: 2rem;
+    }
+
+    .page-content {
+        margin-left: 10px;
     }
     
+    /* Photo Grid */
     .photo-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .photo-frame {
+        margin: 0 auto;
+        max-width: 300px;
     }
     
+    /* Diary */
     .diary-book {
         padding: 30px 20px;
+        margin: 20px 10px;
+    }
+
+    .diary-tabs {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .diary-tab {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .letter-heading {
+        font-size: 2rem;
+    }
+
+    .letter-text {
+        font-size: 1rem;
+        line-height: 1.8;
     }
     
+    /* Timeline */
     .timeline-item {
         flex-direction: column !important;
+        padding-left: 50px;
     }
     
     .timeline-line {
-        left: 30px;
+        left: 20px;
     }
     
     .timeline-dot {
+        left: 10px;
         margin: 0;
     }
-    
+
+    .timeline-story {
+        padding: 20px 10px;
+    }
+
+    .timeline-paragraph {
+        font-size: 1rem;
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    /* New Year */
     .celebration-title {
         font-size: 2.5rem;
     }
@@ -1542,6 +1632,154 @@
     }
     
     .final-text {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    .blessing-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .blessing-card {
+        padding: 20px;
+    }
+
+    .blessing-icon {
+        font-size: 2.5rem;
+    }
+
+    /* Album */
+    .photo-album-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .photo-frame {
+        max-width: 100%;
+    }
+
+    .album-message {
+        padding: 20px 10px;
+    }
+
+    .message-card {
+        padding: 25px 15px;
+    }
+
+    /* Night Chapter */
+    .lofi-player {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .night-message {
+        padding: 20px 15px;
+    }
+
+    .message-text {
+        font-size: 1rem;
+    }
+
+    /* Group Chat */
+    .group-chat-container {
+        padding: 10px;
+    }
+
+    .chat-header {
+        padding: 12px;
+    }
+
+    .chat-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .online-status {
+        font-size: 0.85rem;
+    }
+
+    /* Buttons */
+    .back-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .completion-message {
+        padding: 25px 15px;
+        margin: 30px 10px;
+    }
+
+    .completion-message h3 {
+        font-size: 1.8rem;
+    }
+
+    .interaction-hint {
+        font-size: 0.9rem;
+        padding: 10px 15px;
     }
 }
+
+@media (max-width: 480px) {
+    .chapter-title {
+        font-size: 2rem;
+    }
+
+    .chapter-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .handwriting {
+        font-size: 1.8rem;
+    }
+
+    .notebook {
+        padding: 20px 15px;
+    }
+
+    .phone-frame {
+        max-width: 100%;
+    }
+
+    .message-bubble {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+
+    .celebration-title {
+        font-size: 2rem;
+    }
+
+    .countdown-display {
+        font-size: 5rem;
+    }
+
+    .blessing-icon {
+        font-size: 2rem;
+    }
+
+    .final-text {
+        font-size: 1rem;
+    }
+
+    .back-button {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .chapter-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .countdown-display {
+        font-size: 4rem;
+    }
+
+    .night-content {
+        padding: 20px 10px;
+    }
+}
+

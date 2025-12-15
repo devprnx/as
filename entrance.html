@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Archana & Saloni 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffd1dc 0%, #e0b0ff 50%, #b0e0e6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-particle {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: float-up 6s infinite ease-in-out;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Entrance Container */
+        .entrance-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .entrance-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 3px 3px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .entrance-subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .entrance-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Enter Button */
+        .enter-button {
+            display: inline-block;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            border: 3px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enter-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .enter-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .enter-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .enter-button:active {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Sparkles around button */
+        .sparkle-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: sparkle-rotate 3s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .sparkle:nth-child(1) { top: -20px; left: -20px; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: -20px; right: -20px; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: -20px; left: -20px; animation-delay: 1s; }
+        .sparkle:nth-child(4) { bottom: -20px; right: -20px; animation-delay: 1.5s; }
+
+        @keyframes sparkle-rotate {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3) rotate(180deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* Names Display */
+        .names-display {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: fade-in-up 1s ease-out;
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .name-heart {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 2rem;
+            animation: beat-heart 1.5s infinite ease-in-out;
+        }
+
+        @keyframes beat-heart {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .entrance-title {
+                font-size: 2.5rem;
+            }
+
+            .entrance-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .entrance-description {
+                font-size: 1rem;
+            }
+
+            .names-display {
+                font-size: 1.8rem;
+            }
+
+            .enter-button {
+                padding: 15px 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .entrance-container {
+                padding: 20px;
+            }
+
+            .entrance-title {
+                font-size: 2rem;
+            }
+
+            .entrance-subtitle {
+                font-size: 1rem;
+            }
+
+            .names-display {
+                font-size: 1.5rem;
+            }
+
+            .enter-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <!-- Entrance Content -->
+    <div class="entrance-container">
+        <h1 class="entrance-title">💖 Memory Room 💖</h1>
+        
+        <div class="names-display">
+            Archana <span class="name-heart">💕</span> Saloni
+        </div>
+
+        <p class="entrance-subtitle">Ek Dosti Ki Kahani</p>
+        <p class="entrance-description">
+            School ke silent besties se lekar late night conversations tak...<br>
+            Yaadein, hansi, aur ek bond jo hamesha rahega. No cap! ✨
+        </p>
+
+        <div class="sparkle-container">
+            <span class="sparkle">✨</span>
+            <span class="sparkle">💫</span>
+            <span class="sparkle">⭐</span>
+            <span class="sparkle">🌟</span>
+            <a href="index.html" class="enter-button">
+                Click to Enter 🎉
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floating-hearts');
+            const hearts = ['💕', '💖', '💗', '💓', '💝', '❤️', '🧡', '💛', '💚', '💙', '💜'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart-particle';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 500);
+        }
+
+        createFloatingHearts();
+
+        // Add sparkle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = ['✨', '💫', '⭐'][Math.floor(Math.random() * 3)];
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                sparkle.style.fontSize = '1.5rem';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '9999';
+                sparkle.style.animation = 'fade-out-up 1s ease-out forwards';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fade-out-up {
+                to {
+                    opacity: 0;
+                    transform: translateY(-50px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

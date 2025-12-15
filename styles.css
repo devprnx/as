@@ -784,3 +784,187 @@ body {
     }
 }
 
+/* ============================================
+   ENHANCED MOBILE RESPONSIVENESS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .room-title {
+        font-size: 2.5rem;
+    }
+
+    .room-subtitle {
+        font-size: 1rem;
+    }
+
+    .objects-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .object-item {
+        padding: 25px;
+    }
+
+    .object-icon {
+        font-size: 4rem;
+    }
+
+    .object-label {
+        font-size: 1.3rem;
+    }
+
+    .memory-hunt-counter {
+        top: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .progress-bar {
+        padding: 15px;
+        margin: 30px 10px;
+    }
+
+    .progress-fill {
+        height: 25px;
+    }
+
+    .progress-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .room-title {
+        font-size: 2rem;
+    }
+
+    .object-icon {
+        font-size: 3.5rem;
+    }
+
+    .object-item {
+        padding: 20px;
+    }
+
+    .memory-hunt-counter {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+
+/* ============================================
+   PROGRESS BAR ENHANCEMENT
+   ============================================ */
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 25px;
+    margin: 40px auto;
+    max-width: 600px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 3px solid var(--pastel-purple);
+}
+
+.progress-container {
+    background: rgba(183, 110, 121, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 30px;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b9d 0%, #c44569 50%, #b76e79 100%);
+    border-radius: 20px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.progress-text {
+    margin-top: 15px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--rose-gold);
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   ENHANCED ANIMATIONS
+   ============================================ */
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes floatIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.object-item {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.object-item:nth-child(1) { animation-delay: 0.1s; }
+.object-item:nth-child(2) { animation-delay: 0.2s; }
+.object-item:nth-child(3) { animation-delay: 0.3s; }
+.object-item:nth-child(4) { animation-delay: 0.4s; }
+.object-item:nth-child(5) { animation-delay: 0.5s; }
+.object-item:nth-child(6) { animation-delay: 0.6s; }
+.object-item:nth-child(7) { animation-delay: 0.7s; }
+.object-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+

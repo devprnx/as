@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola Amigos - Group Chat Chaos</title>
+    <title>Saloni ka Ghar - Group Chat</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="chapters.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -11,18 +11,18 @@
 <body class="hola-bg">
     <div class="chapter-page">
         <div class="chapter-header">
-            <h1 class="chapter-title">🤪 Hola Amigos</h1>
-            <p class="chapter-subtitle">"Old group chat - jahan sab shuru hua tha! 😂"</p>
+            <h1 class="chapter-title">🏠 Saloni ka Ghar 🏠</h1>
+            <p class="chapter-subtitle">"Naya group - jahan sab yaar hai aur vibes humesha top pe! 💯"</p>
         </div>
 
         <div class="group-chat-container">
             <div class="phone-frame">
                 <div class="phone-screen">
                     <div class="chat-header group-header">
-                        <div class="group-avatar">👭🎉</div>
+                        <div class="group-avatar">🏠✨</div>
                         <div class="chat-info">
-                            <h3>Hola Amigos 🌟</h3>
-                            <p class="online-status">Archana, Saloni, +others</p>
+                            <h3>Saloni ka Ghar 🏠</h3>
+                            <p class="online-status">Prince, Saloni, Archana, Sadakat, Hena, Atif</p>
                         </div>
                     </div>
 
@@ -32,7 +32,7 @@
 
                     <div class="multiple-typing" id="multi-typing" style="display: none;">
                         <span class="typing-name">Prince</span>
-                        <span class="typing-name">Sadakat</span>
+                        <span class="typing-name">Saloni</span>
                         <span class="typing-name">Hena</span>
                         <span class="typing-dots">typing...</span>
                     </div>
@@ -53,45 +53,47 @@
             <p>WRONG message pe click karo aur aage badho! 🤦‍♀️</p>
             <div class="message-options">
                 <button class="wrong-msg" onclick="clickWrongMessage(1)">
-                    "Kal milte hain!" ✅
+                    "Kal milte hain sab!" ✅
                 </button>
                 <button class="wrong-msg correct" onclick="clickWrongMessage(2)">
-                    "Sorry, galat group! Oops!" 😅
+                    "Wrong group! Sorry guys 😅" 😅
                 </button>
                 <button class="wrong-msg" onclick="clickWrongMessage(3)">
-                    "Good night sab logo!" 🌙
+                    "Good night everyone!" 🌙
                 </button>
             </div>
             <p class="game-result" id="game-result"></p>
         </div>
 
         <div class="completion-message" id="completion-msg" style="display: none;">
-            <h3>✨ Hola Amigos Complete! ✨</h3>
-            <p>Old group vibes - Best memories! 🎉💕</p>
+            <h3>✨ Saloni ka Ghar Complete! ✨</h3>
+            <p>Naya ghar, naye dost, same pyaar! 🏠💕</p>
             <a href="../index.html" class="back-button">Memory Room pe wapas chalo 🏠</a>
         </div>
 
         <div class="interaction-hint">
-            🎪 Chaos dekho unfold hote hue fr fr!
+            🏠 Naye ghar ka chaos enjoy karo!
         </div>
     </div>
 
     <script>
         const chaosMessages = [
-            { sender: 'Saloni', text: 'Guys!!! Sunooo 🎉', delay: 500 },
-            { sender: 'Archana', text: 'Haan bolo kya hua!', delay: 300 },
-            { sender: 'Prince', text: 'Kya scene hai yaar?', delay: 400 },
-            { sender: 'Saloni', text: 'Weekend pe plan hai kya besties?', delay: 600 },
-            { sender: 'Sadakat', text: 'Movie dekhne chalein fr!', delay: 300 },
-            { sender: 'Archana', text: 'Arre mujhe shopping karni hai! 🛍️', delay: 400 },
-            { sender: 'Hena', text: 'Dono kar lete hain yaar! 😂', delay: 500 },
-            { sender: 'Atif', text: 'Count me in! Main bhi aaunga', delay: 400 },
-            { sender: 'Prince', text: 'Perfect vibe! Sab aayenge?', delay: 300 },
-            { sender: 'Sadakat', text: 'Haan bhai full attendance! 💯', delay: 350 },
-            { sender: 'Hena', text: 'This group is lowkey the best ngl', delay: 450 },
-            { sender: 'Saloni', text: '🎊🎊🎊', delay: 200 },
-            { sender: 'Everyone', text: '🎉🎉🎉🎉🎉', delay: 100 },
-            { sender: 'Archana', text: 'Wait wait... voice note aa raha hai! 🎙️', delay: 800, special: 'voice' }
+            { sender: 'Saloni', text: 'Welcome to Saloni ka Ghar everyone! 🏠✨', delay: 500 },
+            { sender: 'Prince', text: 'Arre waah! Naya group ban gaya! 🎉', delay: 400 },
+            { sender: 'Archana', text: 'This is so exciting yaar!', delay: 300 },
+            { sender: 'Sadakat', text: 'Finally ek saath sab log! 😊', delay: 500 },
+            { sender: 'Hena', text: 'Group name toh ekdum perfect hai! 💯', delay: 400 },
+            { sender: 'Atif', text: 'Haan yaar, Saloni ka ghar matlab home vibes fr!', delay: 600 },
+            { sender: 'Saloni', text: 'Aaj se yeh hamara adda hai! 🏠', delay: 400 },
+            { sender: 'Prince', text: 'Plans banate hain guys! Weekend pe?', delay: 500 },
+            { sender: 'Archana', text: 'Main ready hu! Coffee ya movie?', delay: 350 },
+            { sender: 'Sadakat', text: 'Dono! Pehle coffee, phir movie 🍿', delay: 450 },
+            { sender: 'Hena', text: 'Sounds perfect! Count me in besties', delay: 400 },
+            { sender: 'Atif', text: 'Sab aayenge toh maza aayega! 🔥', delay: 350 },
+            { sender: 'Saloni', text: 'Group photo bhi lenge sab! 📸', delay: 300 },
+            { sender: 'Prince', text: 'Memories banani hai fr fr! 💫', delay: 400 },
+            { sender: 'Everyone', text: '🎉🏠💕✨🎊', delay: 200 },
+            { sender: 'Archana', text: 'Ek voice note bhejti hu wait! 🎙️', delay: 800, special: 'voice' }
         ];
 
         let messageIndex = 0;
@@ -110,7 +112,7 @@
                     msgDiv.className = `message ${message.sender.toLowerCase()}`;
                     
                     // Random emoji burst
-                    const emojis = ['😂', '🎉', '💕', '✨', '🤪', '🎊'];
+                    const emojis = ['😂', '🎉', '💕', '✨', '🤪', '🎊', '🏠'];
                     const randomEmoji = message.text.includes('🎉') || message.text.includes('🎊') ? 
                         emojis[Math.floor(Math.random() * emojis.length)] : '';
                     
@@ -150,7 +152,7 @@
         }
 
         function createEmojiPop() {
-            const emojis = ['😂', '🤣', '💀', '🎉'];
+            const emojis = ['😂', '🤣', '💀', '🎉', '🏠', '✨'];
             const emoji = document.createElement('div');
             emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             emoji.style.position = 'fixed';
@@ -218,7 +220,7 @@
             const result = document.getElementById('game-result');
             
             if (choice === 2) {
-                result.textContent = '✅ Sahi hai! Galat message pe click kiya besties! 😂';
+                result.textContent = '✅ Sahi hai! Wrong message mila gaya! 😂';
                 result.style.color = '#4CAF50';
                 
                 setTimeout(() => {
@@ -235,8 +237,8 @@
             document.getElementById('completion-msg').style.animation = 'zoomIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
             
             let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
-            if (!completed.includes('hola')) {
-                completed.push('hola');
+            if (!completed.includes('salonighar')) {
+                completed.push('salonighar');
                 localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
             }
         }

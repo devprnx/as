@@ -15,13 +15,13 @@ const gameState = {
 const chapterDependencies = {
     'childhood': [],
     'texts': ['childhood'],
-    'wedding': ['texts'],
-    'hola': ['wedding'],
+    'hola': ['texts'],
     'night': ['hola'],
     'diary': ['night'],
     'timeline': ['diary'],
     'album': ['timeline'],
-    'newyear': ['album']
+    'salonighar': ['album'],
+    'newyear': ['salonighar']
 };
 
 // ============================================
