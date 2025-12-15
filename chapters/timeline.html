@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Our Journey</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="timeline-bg">
+    <div class="chapter-page">
+        <div class="chapter-header">
+            <h1 class="chapter-title">⏳ Our Timeline</h1>
+            <p class="chapter-subtitle">"Every year added a new chapter to our story..."</p>
+        </div>
+
+        <div class="timeline-story">
+            <p class="timeline-paragraph">
+                <strong>🧸 School Days</strong><br>
+                It all started in school... two girls who barely spoke to each other. Silent friends in the same classroom, sharing the same space but different worlds.
+            </p>
+
+            <p class="timeline-paragraph">
+                <strong>💍 Bhaiya ki Shaadi</strong><br>
+                Then came the wedding - a celebration that brought them together in unexpected ways. Dancing, laughing, and creating memories that would last forever.
+            </p>
+
+            <p class="timeline-paragraph">
+                <strong>📚 10th Boards</strong><br>
+                The stress of 10th boards hit hard. Late night study sessions, exam anxiety, and the pressure of growing up. But through it all, a friendship was quietly blooming.
+            </p>
+
+            <p class="timeline-paragraph">
+                <strong>📱 The Reconnection</strong><br>
+                That first text after so long... "Hey, how have you been?" Simple words that rekindled everything. Messages turned into calls, calls into conversations that lasted for hours.
+            </p>
+
+            <p class="timeline-paragraph">
+                <strong>🤪 Hola Amigos Era</strong><br>
+                The group chat chaos began! Memes, voice notes, random 3 AM messages, inside jokes that no one else understood. This was when friendship became family.
+            </p>
+
+            <p class="timeline-paragraph">
+                <strong>💪 Present Day</strong><br>
+                Here you are today - stronger than ever. Through ups and downs, laughter and tears, you've built something beautiful. A friendship that feels like home.
+            </p>
+
+            <p class="timeline-paragraph">
+                <strong>✨ 2026 → ∞</strong><br>
+                And the story continues... New years, new adventures, new memories waiting to be made. Some friendships are forever, and this is one of them. Happy New Year 2026! 💖
+            </p>
+        </div>
+
+        <div class="completion-message" style="margin-top: 3rem;">
+            <button onclick="returnToMemoryRoom()" class="back-button">Return to Memory Room 🏠</button>
+        </div>
+    </div>
+
+    <script>
+        function returnToMemoryRoom() {
+            // Mark chapter as complete
+            let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+            if (!completed.includes('timeline')) {
+                completed.push('timeline');
+                localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+            }
+            window.location.href = '../index.html';
+        }
+
+        // Auto-mark chapter complete when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+            if (!completed.includes('timeline')) {
+                completed.push('timeline');
+                localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+            }
+        });
+    </script>
+</body>
+</html>

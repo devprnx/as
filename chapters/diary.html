@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary - Letters to Each Other</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="diary-bg">
+    <div class="chapter-page">
+        <div class="chapter-header">
+            <h1 class="chapter-title">📖 Dear Diary</h1>
+            <p class="chapter-subtitle">"Words we never said out loud... but wrote down forever"</p>
+        </div>
+
+        <div class="diary-container">
+            <div class="diary-tabs">
+                <button class="diary-tab active" onclick="switchDiary('archana')">
+                    💖 Archana → Saloni
+                </button>
+                <button class="diary-tab" onclick="switchDiary('saloni')">
+                    💖 Saloni → Archana
+                </button>
+            </div>
+
+            <div class="diary-book">
+                <!-- Archana's Letter -->
+                <div class="diary-page" id="diary-archana">
+                    <div class="letter-content" id="letter-archana">
+                        <h3 class="letter-heading">Dear Saloni,</h3>
+                        <div class="letter-text">
+                            <!-- Text will appear line by line -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saloni's Letter -->
+                <div class="diary-page" id="diary-saloni" style="display: none;">
+                    <div class="letter-content" id="letter-saloni">
+                        <h3 class="letter-heading">Dear Archana,</h3>
+                        <div class="letter-text">
+                            <!-- Text will appear line by line -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-instruction" id="scroll-hint">
+                ⚠️ Scroll slowly... fast scrolling pauses the text!
+            </div>
+        </div>
+
+        <div class="completion-message" id="completion-msg" style="display: none;">
+            <h3>✨ Diary Chapter Complete! ✨</h3>
+            <p>Words that came from the heart... 💌</p>
+            <a href="../index.html" class="back-button">Return to Memory Room 🏠</a>
+        </div>
+    </div>
+
+    <script>
+        const archanaLetter = [
+            "Saloni,",
+            "",
+            "Kabhi socha nahi tha ki school mein dekha hua ek chehra,",
+            "ek din itna important ban jayega.",
+            "",
+            "Hum dono silent friends the... remember?",
+            "Par jab baat shuru hui, tab pata chala",
+            "ki kitna kuch common hai hum mein. 😊",
+            "",
+            "Your random texts brightened my boring days,",
+            "Your voice notes made me laugh like crazy,",
+            "Your support kept me going when I felt low.",
+            "",
+            "Thank you for being YOU. 💕",
+            "Thank you for accepting ME.",
+            "",
+            "Here's to more late night talks,",
+            "More random plans,",
+            "More memories,",
+            "And a friendship that lasts forever. ✨",
+            "",
+            "Love always,",
+            "Archana 💖"
+        ];
+
+        const saloniLetter = [
+            "Archana,",
+            "",
+            "Honestly, I never knew friendship could be this easy.",
+            "No drama, no fakeness... just pure vibes. 🌟",
+            "",
+            "From that first random text to now,",
+            "Every conversation has been special.",
+            "Even the silly ones. 😂",
+            "",
+            "You understand me without explanations,",
+            "You support me without conditions,",
+            "You make me laugh without trying.",
+            "",
+            "That's rare, you know?",
+            "That's precious. 💎",
+            "",
+            "I'm so grateful we reconnected.",
+            "I'm so happy you're in my life.",
+            "",
+            "Here's to us—",
+            "To late nights, random thoughts,",
+            "Group chat chaos, and endless memories. 🎉",
+            "",
+            "Forever your friend,",
+            "Saloni 💕"
+        ];
+
+        let currentDiary = 'archana';
+        let lineIndex = 0;
+        let isWriting = false;
+        let lastScrollTime = Date.now();
+        let scrollSpeed = 0;
+        let bothLettersRead = { archana: false, saloni: false };
+
+        function switchDiary(diary) {
+            if (isWriting) return;
+
+            currentDiary = diary;
+            
+            // Update tabs
+            document.querySelectorAll('.diary-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show diary
+            document.querySelectorAll('.diary-page').forEach(page => page.style.display = 'none');
+            document.getElementById(`diary-${diary}`).style.display = 'block';
+            document.getElementById(`diary-${diary}`).style.animation = 'pageFlip 1s ease-out';
+            
+            // Start writing if not already read
+            if (!bothLettersRead[diary]) {
+                setTimeout(() => {
+                    startWriting(diary);
+                }, 1000);
+            }
+        }
+
+        function startWriting(diary) {
+            if (isWriting) return;
+            
+            isWriting = true;
+            lineIndex = 0;
+            
+            const letter = diary === 'archana' ? archanaLetter : saloniLetter;
+            const container = document.querySelector(`#letter-${diary} .letter-text`);
+            container.innerHTML = '';
+            
+            writeNextLine(letter, container, diary);
+        }
+
+        function writeNextLine(letter, container, diary) {
+            if (lineIndex >= letter.length) {
+                isWriting = false;
+                bothLettersRead[diary] = true;
+                
+                // Check if both read
+                if (bothLettersRead.archana && bothLettersRead.saloni) {
+                    setTimeout(() => {
+                        completeChapter();
+                    }, 2000);
+                }
+                return;
+            }
+            
+            // Check scroll speed
+            const now = Date.now();
+            const timeSinceLastScroll = now - lastScrollTime;
+            
+            if (scrollSpeed > 100 && timeSinceLastScroll < 1000) {
+                // Fast scroll detected - pause
+                setTimeout(() => {
+                    writeNextLine(letter, container, diary);
+                }, 2000);
+                return;
+            }
+            
+            const line = letter[lineIndex];
+            const lineEl = document.createElement('p');
+            lineEl.className = 'handwriting-line';
+            lineEl.textContent = line || '\u00A0'; // nbsp for empty lines
+            lineEl.style.animation = 'fadeInLine 1s ease-out';
+            
+            container.appendChild(lineEl);
+            lineIndex++;
+            
+            setTimeout(() => {
+                writeNextLine(letter, container, diary);
+            }, 800);
+        }
+
+        function completeChapter() {
+            document.getElementById('completion-msg').style.display = 'block';
+            document.getElementById('completion-msg').style.animation = 'zoomIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            
+            let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+            if (!completed.includes('diary')) {
+                completed.push('diary');
+                localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+            }
+        }
+
+        // Track scroll speed
+        let lastScrollPosition = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            scrollSpeed = Math.abs(currentScroll - lastScrollPosition);
+            lastScrollPosition = currentScroll;
+            lastScrollTime = Date.now();
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                startWriting('archana');
+            }, 1000);
+        });
+
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInLine {
+                from { opacity: 0; transform: translateX(-20px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+            
+            @keyframes pageFlip {
+                0% { transform: rotateY(90deg); opacity: 0; }
+                100% { transform: rotateY(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

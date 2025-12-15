@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Album - Our Precious Memories</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="album-bg">
+    <div class="chapter-page">
+        <div class="chapter-header">
+            <h1 class="chapter-title">📸 Our Photo Album 📸</h1>
+            <p class="chapter-subtitle">"Every picture tells a thousand words... Our story in frames 💖"</p>
+        </div>
+
+        <div class="album-page-container">
+            <div class="album-intro">
+                <p class="intro-text">
+                    Click each photo to reveal the precious moment...<br>
+                    Each memory is a treasure! ✨
+                </p>
+            </div>
+
+            <div class="photo-album-grid">
+                <!-- Photo 1 -->
+                <div class="photo-frame" data-photo="1" onclick="revealPhoto(1)">
+                    <div class="frame-border">
+                        <img src="../img/i1.jpg" alt="Memory 1" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23ffd1dc%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>🧸</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="photo-frame" data-photo="2" onclick="revealPhoto(2)">
+                    <div class="frame-border">
+                        <img src="../img/i2.jpg" alt="Memory 2" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23e0b0ff%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>👋</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="photo-frame" data-photo="3" onclick="revealPhoto(3)">
+                    <div class="frame-border">
+                        <img src="../img/i3.jpg" alt="Memory 3" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23fff4ba%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>💍</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="photo-frame" data-photo="4" onclick="revealPhoto(4)">
+                    <div class="frame-border">
+                        <img src="../img/i4.jpg" alt="Memory 4" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23ffdab9%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>🎉</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 5 -->
+                <div class="photo-frame" data-photo="5" onclick="revealPhoto(5)">
+                    <div class="frame-border">
+                        <img src="../img/i5.jpg" alt="Memory 5" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23b0e0e6%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>💕</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 6 -->
+                <div class="photo-frame" data-photo="6" onclick="revealPhoto(6)">
+                    <div class="frame-border">
+                        <img src="../img/i6.jpg" alt="Memory 6" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23d4f1f4%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>😂</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 7 -->
+                <div class="photo-frame" data-photo="7" onclick="revealPhoto(7)">
+                    <div class="frame-border">
+                        <img src="../img/i7.jpg" alt="Memory 7" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23f5e6ff%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>🌟</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 8 -->
+                <div class="photo-frame" data-photo="8" onclick="revealPhoto(8)">
+                    <div class="frame-border">
+                        <img src="../img/i8.jpg" alt="Memory 8" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23ffd1dc%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>✨</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 9 -->
+                <div class="photo-frame" data-photo="9" onclick="revealPhoto(9)">
+                    <div class="frame-border">
+                        <img src="../img/i9.jpg" alt="Memory 9" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23e0b0ff%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>🎊</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 10 -->
+                <div class="photo-frame" data-photo="10" onclick="revealPhoto(10)">
+                    <div class="frame-border">
+                        <img src="../img/i10.jpg" alt="Memory 10" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23fff8e7%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>🌸</text></svg>'">
+                    </div>
+                </div>
+
+                <!-- Photo 11 -->
+                <div class="photo-frame" data-photo="11" onclick="revealPhoto(11)">
+                    <div class="frame-border">
+                        <img src="../img/i11.jpg" alt="Memory 11" class="photo-img blurred" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%23ffd1dc%22 width=%22400%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22>💖</text></svg>'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-message" id="album-complete" style="display: none;">
+                <div class="message-card">
+                    <h2>💖 Album Complete! 💖</h2>
+                    <p class="album-final-msg">
+                        Every photo is a frozen moment of our beautiful journey...<br>
+                        From strangers to sisters,<br>
+                        From silence to endless conversations,<br>
+                        From memories to forever! 🥹✨<br><br>
+                        <strong>This is just the beginning of our story! 💕</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="completion-message" id="completion-msg" style="display: none;">
+            <h3>✨ Album Chapter Complete! ✨</h3>
+            <p>Memories captured, hearts full! 📸💖</p>
+            <a href="../index.html" class="back-button">Return to Memory Room 🏠</a>
+        </div>
+    </div>
+
+    <script>
+        let photosRevealed = 0;
+        const totalPhotos = 11;
+
+        function revealPhoto(photoNum) {
+            const frame = document.querySelector(`[data-photo="${photoNum}"]`);
+            const img = frame.querySelector('.photo-img');
+            
+            if (img.classList.contains('blurred')) {
+                img.classList.remove('blurred');
+                img.classList.add('revealed');
+                
+                // Add sparkle effect
+                createPhotoSparkles(frame);
+                playPhotoRevealSound();
+                
+                photosRevealed++;
+                
+                // Check if all photos revealed
+                if (photosRevealed === totalPhotos) {
+                    setTimeout(() => {
+                        showAlbumComplete();
+                    }, 1000);
+                }
+            }
+        }
+
+        function createPhotoSparkles(element) {
+            const rect = element.getBoundingClientRect();
+            const sparkles = ['✨', '💫', '⭐', '🌟', '💖'];
+            
+            for (let i = 0; i < 10; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = rect.left + rect.width / 2 + 'px';
+                sparkle.style.top = rect.top + rect.height / 2 + 'px';
+                sparkle.style.fontSize = '2rem';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '10000';
+                
+                const angle = (i / 10) * Math.PI * 2;
+                const distance = 80 + Math.random() * 40;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                
+                sparkle.style.transition = 'all 1s ease-out';
+                
+                setTimeout(() => {
+                    sparkle.style.transform = `translate(${x}px, ${y}px)`;
+                    sparkle.style.opacity = '0';
+                }, 50);
+                
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1100);
+            }
+        }
+
+        function playPhotoRevealSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            osc.frequency.setValueAtTime(1000, audioContext.currentTime);
+            osc.type = 'sine';
+            
+            gain.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            osc.start(audioContext.currentTime);
+            osc.stop(audioContext.currentTime + 0.3);
+        }
+
+        function showAlbumComplete() {
+            document.getElementById('album-complete').style.display = 'block';
+            document.getElementById('album-complete').scrollIntoView({ behavior: 'smooth' });
+            
+            // Play celebration sound
+            playCelebrationSound();
+            
+            // Create confetti
+            createConfetti();
+            
+            setTimeout(() => {
+                completeChapter();
+            }, 3000);
+        }
+
+        function playCelebrationSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const melody = [523, 659, 784, 1047];
+            
+            melody.forEach((freq, i) => {
+                setTimeout(() => {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    
+                    osc.frequency.setValueAtTime(freq, audioContext.currentTime);
+                    osc.type = 'sine';
+                    
+                    gain.gain.setValueAtTime(0.3, audioContext.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                    
+                    osc.start(audioContext.currentTime);
+                    osc.stop(audioContext.currentTime + 0.5);
+                }, i * 200);
+            });
+        }
+
+        function createConfetti() {
+            const emojis = ['🎉', '🎊', '✨', '💖', '🌟', '💫', '📸', '💕'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-50px';
+                    confetti.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.zIndex = '9999';
+                    confetti.style.animation = `fall ${Math.random() * 2 + 3}s linear forwards`;
+                    
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        function completeChapter() {
+            document.getElementById('completion-msg').style.display = 'block';
+            document.getElementById('completion-msg').style.animation = 'zoomIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            
+            let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+            if (!completed.includes('album')) {
+                completed.push('album');
+                localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+            }
+        }
+
+        // Add fall animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(110vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

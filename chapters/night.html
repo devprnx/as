@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Late Night Talks - 2 AM Conversations</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="night-bg">
+    <div class="chapter-page">
+        <div class="night-sky" id="night-sky">
+            <!-- Stars will be added dynamically -->
+        </div>
+
+        <div class="chapter-header">
+            <h1 class="chapter-title night-title">🌙 Late Night Talks</h1>
+            <p class="chapter-subtitle">"Raat ke 2 baje... jab duniya so rahi hoti hai"</p>
+        </div>
+
+        <div class="waiting-screen" id="waiting">
+            <div class="moon">🌙</div>
+            <p class="waiting-text">Wait for the magic... ✨</p>
+            <div class="countdown" id="countdown">10</div>
+        </div>
+
+        <div class="night-content" id="night-content" style="display: none;">
+            <div class="lofi-player">
+                <div class="player-icon">🎧</div>
+                <p>Lo-fi beats playing...</p>
+                <div class="visualizer">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+
+            <div class="late-night-messages">
+                <div class="night-message" style="animation-delay: 0.5s;">
+                    <p class="message-text fade-in">
+                        "Raat ke 2 baje ke talks...<br>
+                        jab duniya so rahi hoti hai<br>
+                        aur hum bas baatein kar rahe hote hain." 🌌
+                    </p>
+                </div>
+
+                <div class="night-message" style="animation-delay: 2s;">
+                    <p class="message-text fade-in">
+                        "Sapne, plans, random thoughts...<br>
+                        Kuch bhi matlab ka, kuch bhi bekaar ka 😂"
+                    </p>
+                </div>
+
+                <div class="night-message" style="animation-delay: 4s;">
+                    <p class="message-text fade-in">
+                        "But those were the best conversations...<br>
+                        Real, unfiltered, pure 💫"
+                    </p>
+                </div>
+
+                <div class="night-message" style="animation-delay: 6s;">
+                    <p class="message-text fade-in">
+                        "2 AM hits different when you're talking to the right person 🥹✨"
+                    </p>
+                </div>
+
+                <div class="night-message final-msg" style="animation-delay: 8s;">
+                    <p class="message-text fade-in">
+                        <strong>"Some friendships are made in daylight,<br>
+                        but strengthened in moonlight." 🌙💖</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="shooting-stars" id="shooting-stars">
+                <!-- Shooting stars will appear here -->
+            </div>
+        </div>
+
+        <div class="completion-message" id="completion-msg" style="display: none;">
+            <h3>✨ Night Chapter Complete! ✨</h3>
+            <p>Those 2 AM talks... forever in our hearts 💙</p>
+            <a href="../index.html" class="back-button">Return to Memory Room 🏠</a>
+        </div>
+
+        <div class="interaction-hint" id="hint">
+            🌙 Patience is key... let the night unfold
+        </div>
+    </div>
+
+    <script>
+        let inactivityTimer = null;
+        let countdownValue = 10;
+        let contentRevealed = false;
+
+        // Create stars
+        function createStars() {
+            const nightSky = document.getElementById('night-sky');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.textContent = '⭐';
+                nightSky.appendChild(star);
+            }
+        }
+
+        // Countdown and reveal
+        function startCountdown() {
+            const countdownEl = document.getElementById('countdown');
+            const interval = setInterval(() => {
+                countdownValue--;
+                countdownEl.textContent = countdownValue;
+
+                if (countdownValue <= 0) {
+                    clearInterval(interval);
+                    revealContent();
+                }
+            }, 1000);
+        }
+
+        function revealContent() {
+            if (contentRevealed) return;
+            contentRevealed = true;
+
+            // Dim screen
+            document.body.style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)';
+            
+            // Hide waiting screen
+            document.getElementById('waiting').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('waiting').style.display = 'none';
+                document.getElementById('hint').style.display = 'none';
+                
+                // Show content
+                document.getElementById('night-content').style.display = 'block';
+                document.getElementById('night-content').style.animation = 'fadeIn 2s ease-out';
+                
+                // Start lo-fi visualization
+                startVisualization();
+                
+                // Create shooting stars
+                createShootingStars();
+                
+                // Auto complete after all messages
+                setTimeout(() => {
+                    completeChapter();
+                }, 12000);
+            }, 1000);
+        }
+
+        function startVisualization() {
+            const bars = document.querySelectorAll('.visualizer .bar');
+            bars.forEach((bar, i) => {
+                bar.style.animation = `visualize ${0.5 + Math.random() * 0.5}s infinite ease-in-out`;
+                bar.style.animationDelay = i * 0.1 + 's';
+            });
+        }
+
+        function createShootingStars() {
+            setInterval(() => {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 50 + '%';
+                star.textContent = '💫';
+                
+                document.getElementById('shooting-stars').appendChild(star);
+                
+                setTimeout(() => star.remove(), 2000);
+            }, 3000);
+        }
+
+        function completeChapter() {
+            document.getElementById('completion-msg').style.display = 'block';
+            document.getElementById('completion-msg').style.animation = 'zoomIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            
+            let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+            if (!completed.includes('night')) {
+                completed.push('night');
+                localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+            }
+        }
+
+        // Detect inactivity
+        let lastActivity = Date.now();
+        
+        function checkInactivity() {
+            const inactive = Date.now() - lastActivity;
+            if (inactive >= 10000 && !contentRevealed) {
+                revealContent();
+            }
+        }
+
+        document.addEventListener('mousemove', () => lastActivity = Date.now());
+        document.addEventListener('keypress', () => lastActivity = Date.now());
+        document.addEventListener('click', () => lastActivity = Date.now());
+
+        setInterval(checkInactivity, 1000);
+
+        window.addEventListener('load', () => {
+            createStars();
+            startCountdown();
+        });
+
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            .star {
+                position: absolute;
+                font-size: 0.5rem;
+                opacity: 0.6;
+                animation: twinkle 3s infinite;
+            }
+            
+            @keyframes twinkle {
+                0%, 100% { opacity: 0.3; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.2); }
+            }
+            
+            .fade-in {
+                animation: fadeInText 3s ease-out forwards;
+            }
+            
+            @keyframes fadeInText {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            @keyframes visualize {
+                0%, 100% { height: 5px; }
+                50% { height: 25px; }
+            }
+            
+            .shooting-star {
+                position: absolute;
+                font-size: 1.5rem;
+                animation: shoot 2s linear forwards;
+            }
+            
+            @keyframes shoot {
+                to {
+                    transform: translate(300px, 300px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

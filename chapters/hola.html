@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Amigos - Group Chat Chaos</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="hola-bg">
+    <div class="chapter-page">
+        <div class="chapter-header">
+            <h1 class="chapter-title">🤪 Hola Amigos</h1>
+            <p class="chapter-subtitle">"Group chat... jahan har message chaotic hai! 😂"</p>
+        </div>
+
+        <div class="group-chat-container">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="chat-header group-header">
+                        <div class="group-avatar">👭🎉</div>
+                        <div class="chat-info">
+                            <h3>Hola Amigos 🌟</h3>
+                            <p class="online-status">Archana, Saloni, +5 others</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages chaos" id="chaos-chat">
+                        <!-- Chaos messages will appear here -->
+                    </div>
+
+                    <div class="multiple-typing" id="multi-typing" style="display: none;">
+                        <span class="typing-name">Archana</span>
+                        <span class="typing-name">Saloni</span>
+                        <span class="typing-name">+3 others</span>
+                        <span class="typing-dots">typing...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="voice-note-popup" id="voice-note" style="display: none;">
+                <div class="voice-wave">
+                    🎙️ <span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span>
+                </div>
+                <p>Voice Note Playing... 😂</p>
+                <audio id="giggle-sound"></audio>
+            </div>
+        </div>
+
+        <div class="mini-game" id="mini-game" style="display: none;">
+            <h3>🎮 Mini Challenge!</h3>
+            <p>Click the WRONG message to continue! 🤦‍♀️</p>
+            <div class="message-options">
+                <button class="wrong-msg" onclick="clickWrongMessage(1)">
+                    "See you tomorrow!" ✅
+                </button>
+                <button class="wrong-msg correct" onclick="clickWrongMessage(2)">
+                    "Sorry, wrong group!" 😅
+                </button>
+                <button class="wrong-msg" onclick="clickWrongMessage(3)">
+                    "Good night everyone!" 🌙
+                </button>
+            </div>
+            <p class="game-result" id="game-result"></p>
+        </div>
+
+        <div class="completion-message" id="completion-msg" style="display: none;">
+            <h3>✨ Hola Amigos Complete! ✨</h3>
+            <p>Group chaos = Best memories! 😂💕</p>
+            <a href="../index.html" class="back-button">Return to Memory Room 🏠</a>
+        </div>
+
+        <div class="interaction-hint">
+            🎪 Watch the chaos unfold!
+        </div>
+    </div>
+
+    <script>
+        const chaosMessages = [
+            { sender: 'Archana', text: 'Guys!!! 🎉', delay: 500 },
+            { sender: 'Saloni', text: 'Haan bolo!', delay: 300 },
+            { sender: 'Friend1', text: 'Kya hua?', delay: 400 },
+            { sender: 'Archana', text: 'Plan hai weekend pe?', delay: 600 },
+            { sender: 'Friend2', text: 'Movie?', delay: 300 },
+            { sender: 'Saloni', text: 'Shopping! 🛍️', delay: 400 },
+            { sender: 'Friend3', text: 'Dono! 😂', delay: 500 },
+            { sender: 'Archana', text: 'Perfect!', delay: 300 },
+            { sender: 'Friend1', text: 'Count me in!', delay: 400 },
+            { sender: 'Saloni', text: '🎊🎊🎊', delay: 200 },
+            { sender: 'Everyone', text: '🎉🎉🎉🎉🎉', delay: 100 },
+            { sender: 'Archana', text: 'Wait... voice note incoming! 🎙️', delay: 800, special: 'voice' }
+        ];
+
+        let messageIndex = 0;
+        const chatContainer = document.getElementById('chaos-chat');
+        const multiTyping = document.getElementById('multi-typing');
+
+        function addChaosMessage(message) {
+            return new Promise((resolve) => {
+                // Show multiple typing
+                multiTyping.style.display = 'flex';
+                
+                setTimeout(() => {
+                    multiTyping.style.display = 'none';
+                    
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = `message ${message.sender.toLowerCase()}`;
+                    
+                    // Random emoji burst
+                    const emojis = ['😂', '🎉', '💕', '✨', '🤪', '🎊'];
+                    const randomEmoji = message.text.includes('🎉') || message.text.includes('🎊') ? 
+                        emojis[Math.floor(Math.random() * emojis.length)] : '';
+                    
+                    msgDiv.innerHTML = `
+                        <div class="message-bubble chaos-bubble">
+                            <strong>${message.sender}:</strong>
+                            <p>${message.text} ${randomEmoji}</p>
+                            <span class="message-time">${getCurrentTime()}</span>
+                        </div>
+                    `;
+                    
+                    chatContainer.appendChild(msgDiv);
+                    msgDiv.style.animation = 'bounceIn 0.5s ease-out';
+                    
+                    // Random emoji pop
+                    if (Math.random() > 0.6) {
+                        createEmojiPop();
+                    }
+                    
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    
+                    // Check for voice note
+                    if (message.special === 'voice') {
+                        setTimeout(() => {
+                            showVoiceNote();
+                        }, 500);
+                    }
+                    
+                    resolve();
+                }, message.delay);
+            });
+        }
+
+        function getCurrentTime() {
+            const now = new Date();
+            return now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0');
+        }
+
+        function createEmojiPop() {
+            const emojis = ['😂', '🤣', '💀', '🎉'];
+            const emoji = document.createElement('div');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.position = 'fixed';
+            emoji.style.left = Math.random() * 80 + 10 + 'vw';
+            emoji.style.top = Math.random() * 80 + 10 + 'vh';
+            emoji.style.fontSize = '2rem';
+            emoji.style.pointerEvents = 'none';
+            emoji.style.zIndex = '10000';
+            emoji.style.animation = 'popFade 1s ease-out forwards';
+            
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 1000);
+        }
+
+        function showVoiceNote() {
+            const voiceNote = document.getElementById('voice-note');
+            voiceNote.style.display = 'block';
+            voiceNote.style.animation = 'zoomIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            
+            // Animate wave bars
+            const bars = document.querySelectorAll('.wave-bar');
+            bars.forEach((bar, i) => {
+                bar.style.animation = `wave ${0.5 + i * 0.2}s infinite`;
+            });
+            
+            // Play giggle sound (simple tone sequence)
+            playGiggle();
+            
+            setTimeout(() => {
+                voiceNote.style.display = 'none';
+                showMiniGame();
+            }, 3000);
+        }
+
+        function playGiggle() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const frequencies = [800, 600, 900, 700, 1000];
+            
+            frequencies.forEach((freq, i) => {
+                setTimeout(() => {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    
+                    osc.frequency.setValueAtTime(freq, audioContext.currentTime);
+                    osc.type = 'sine';
+                    
+                    gain.gain.setValueAtTime(0.2, audioContext.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                    
+                    osc.start(audioContext.currentTime);
+                    osc.stop(audioContext.currentTime + 0.2);
+                }, i * 150);
+            });
+        }
+
+        function showMiniGame() {
+            document.getElementById('mini-game').style.display = 'block';
+            document.getElementById('mini-game').style.animation = 'slideInUp 1s ease-out';
+        }
+
+        function clickWrongMessage(choice) {
+            const result = document.getElementById('game-result');
+            
+            if (choice === 2) {
+                result.textContent = '✅ Correct! Galat message pe click kiya! 😂';
+                result.style.color = '#4CAF50';
+                
+                setTimeout(() => {
+                    completeChapter();
+                }, 1500);
+            } else {
+                result.textContent = '❌ Nahi yaar! Try again!';
+                result.style.color = '#f44336';
+            }
+        }
+
+        function completeChapter() {
+            document.getElementById('completion-msg').style.display = 'block';
+            document.getElementById('completion-msg').style.animation = 'zoomIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            
+            let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+            if (!completed.includes('hola')) {
+                completed.push('hola');
+                localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+            }
+        }
+
+        async function startChaos() {
+            for (let msg of chaosMessages) {
+                await addChaosMessage(msg);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(startChaos, 1000);
+        });
+
+        // Add pop fade animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes popFade {
+                0% { transform: scale(0); opacity: 1; }
+                50% { transform: scale(1.5); opacity: 0.8; }
+                100% { transform: scale(0.5); opacity: 0; }
+            }
+            @keyframes bounceIn {
+                0% { transform: scale(0); opacity: 0; }
+                50% { transform: scale(1.1); opacity: 1; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+            @keyframes wave {
+                0%, 100% { height: 10px; }
+                50% { height: 30px; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

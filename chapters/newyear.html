@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026! 🎆</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="newyear-bg">
+    <div class="fireworks-container" id="fireworks">
+        <!-- Fireworks will be generated here -->
+    </div>
+
+    <div class="confetti-container" id="confetti">
+        <!-- Confetti will be generated here -->
+    </div>
+
+    <div class="chapter-page newyear-page">
+        <div class="countdown-container" id="countdown-container">
+            <h1 class="countdown-title">Get Ready! 🎉</h1>
+            <div class="countdown-display" id="countdown-display">5</div>
+            <p class="countdown-subtitle">Countdown to celebration...</p>
+        </div>
+
+        <div class="celebration-content" id="celebration" style="display: none;">
+            <div class="celebration-header">
+                <h1 class="celebration-title">
+                    🎆 Happy New Year 2026! 🎆
+                </h1>
+                <p class="celebration-subtitle">Archana & Saloni - Friendship Forever 💖</p>
+            </div>
+
+            <div class="final-message">
+                <div class="message-box">
+                    <p class="final-text">
+                        "Some friendships don't need daily talks...<br>
+                        they just need one text to restart forever."
+                    </p>
+                </div>
+
+                <div class="message-box">
+                    <p class="final-text">
+                        From silent friends in school,<br>
+                        To late night conversations,<br>
+                        To creating memories that will last a lifetime... 💫
+                    </p>
+                </div>
+
+                <!-- Blessings Section -->
+                <div class="blessings-section" id="blessings">
+                    <h2 class="blessings-title">✨ New Year 2026 Blessings ✨</h2>
+                    
+                    <div class="blessing-cards">
+                        <div class="blessing-card">
+                            <div class="blessing-icon">🌟</div>
+                            <h3>Dreams Come True</h3>
+                            <p>May all your dreams and aspirations become reality this year!</p>
+                        </div>
+                        
+                        <div class="blessing-card">
+                            <div class="blessing-icon">💪</div>
+                            <h3>Strength & Success</h3>
+                            <p>May you find strength in every challenge and success in every endeavor!</p>
+                        </div>
+                        
+                        <div class="blessing-card">
+                            <div class="blessing-icon">❤️</div>
+                            <h3>Love & Laughter</h3>
+                            <p>May your days be filled with love, laughter, and beautiful moments!</p>
+                        </div>
+                        
+                        <div class="blessing-card">
+                            <div class="blessing-icon">🎯</div>
+                            <h3>Growth & Learning</h3>
+                            <p>May you grow, learn, and become the best version of yourself!</p>
+                        </div>
+                        
+                        <div class="blessing-card">
+                            <div class="blessing-icon">🏆</div>
+                            <h3>Achievement Unlocked</h3>
+                            <p>May every goal you set be achieved with grace and determination!</p>
+                        </div>
+                        
+                        <div class="blessing-card">
+                            <div class="blessing-icon">🌈</div>
+                            <h3>Joy & Peace</h3>
+                            <p>May your life be a rainbow of happiness, peace, and positivity!</p>
+                        </div>
+                        
+                        <div class="blessing-card">
+                            <div class="blessing-icon">👨‍👩‍👧‍👦</div>
+                            <h3>Family & Friends</h3>
+                            <p>May your relationships grow stronger and your bonds deeper!</p>
+                        </div>
+                        
+                        <div class="blessing-card special-blessing">
+                            <div class="blessing-icon">💖</div>
+                            <h3>Forever Friendship</h3>
+                            <p>May our friendship continue to shine bright, no matter where life takes us! Archana & Saloni - Always & Forever! 💫</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-box">
+                    <p class="final-text">
+                        Here's to 2026—<br>
+                        More laughs, more chaos,<br>
+                        More random texts at 2 AM,<br>
+                        More memories to cherish. 🥹✨
+                    </p>
+                </div>
+
+                <div class="message-box special">
+                    <p class="final-text big">
+                        <strong>Happy New Year 2026!<br>
+                        To a friendship that's forever! 💖</strong>
+                    </p>
+                </div>
+
+                <div class="signature">
+                    <p>With love, sparkles & endless blessings ✨</p>
+                    <p class="handwriting-sign">~ Archana & Saloni's Friendship Journey ~</p>
+                </div>
+            </div>
+
+            <div class="final-buttons">
+                <a href="../index.html" class="back-button celebration-btn">
+                    🏠 Return to Memory Room
+                </a>
+                <a href="album.html" class="back-button celebration-btn">
+                    📸 View Photo Album
+                </a>
+                <button class="back-button celebration-btn" onclick="replayFireworks()">
+                    🎆 Replay Fireworks
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let countdownValue = 5;
+        let fireworksInterval;
+
+        function startCountdown() {
+            const display = document.getElementById('countdown-display');
+            
+            const interval = setInterval(() => {
+                countdownValue--;
+                display.textContent = countdownValue;
+                display.style.animation = 'none';
+                setTimeout(() => {
+                    display.style.animation = 'countdownPulse 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                }, 10);
+
+                if (countdownValue <= 0) {
+                    clearInterval(interval);
+                    startCelebration();
+                }
+            }, 1000);
+        }
+
+        function startCelebration() {
+            // Hide countdown
+            document.getElementById('countdown-container').style.opacity = '0';
+            
+            setTimeout(() => {
+                document.getElementById('countdown-container').style.display = 'none';
+                document.getElementById('celebration').style.display = 'block';
+                document.getElementById('celebration').style.animation = 'zoomIn 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                
+                // Start effects
+                launchFireworks();
+                createConfetti();
+                playNewYearSound();
+                
+                // Mark complete
+                let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+                if (!completed.includes('newyear')) {
+                    completed.push('newyear');
+                    localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+                }
+            }, 1000);
+        }
+
+        function launchFireworks() {
+            const container = document.getElementById('fireworks');
+            
+            fireworksInterval = setInterval(() => {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.textContent = ['🎆', '🎇', '✨', '💥'][Math.floor(Math.random() * 4)];
+                firework.style.left = Math.random() * 100 + '%';
+                firework.style.top = Math.random() * 100 + '%';
+                firework.style.fontSize = (Math.random() * 3 + 2) + 'rem';
+                
+                container.appendChild(firework);
+                
+                setTimeout(() => firework.remove(), 2000);
+            }, 300);
+        }
+
+        function createConfetti() {
+            const container = document.getElementById('confetti');
+            const emojis = ['🎉', '🎊', '✨', '💖', '🌟', '💫', '2️⃣', '0️⃣', '2️⃣', '6️⃣'];
+            
+            for (let i = 0; i < 200; i++) {
+                setTimeout(() => {
+                    const piece = document.createElement('div');
+                    piece.className = 'confetti-piece';
+                    piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    piece.style.left = Math.random() * 100 + '%';
+                    piece.style.top = '-50px';
+                    piece.style.fontSize = (Math.random() * 1.5 + 0.5) + 'rem';
+                    piece.style.animationDelay = Math.random() * 2 + 's';
+                    piece.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    
+                    container.appendChild(piece);
+                    
+                    setTimeout(() => piece.remove(), 8000);
+                }, i * 30);
+            }
+        }
+
+        function playNewYearSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const celebrationMelody = [
+                523, 587, 659, 784, 880, 988, 1047,
+                1047, 988, 880, 784, 659, 587, 523
+            ];
+            
+            celebrationMelody.forEach((freq, i) => {
+                setTimeout(() => {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    
+                    osc.frequency.setValueAtTime(freq, audioContext.currentTime);
+                    osc.type = 'sine';
+                    
+                    gain.gain.setValueAtTime(0.3, audioContext.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+                    
+                    osc.start(audioContext.currentTime);
+                    osc.stop(audioContext.currentTime + 0.4);
+                }, i * 200);
+            });
+        }
+
+        function replayFireworks() {
+            document.getElementById('fireworks').innerHTML = '';
+            document.getElementById('confetti').innerHTML = '';
+            
+            launchFireworks();
+            createConfetti();
+            playNewYearSound();
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                startCountdown();
+            }, 1000);
+        });
+
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes countdownPulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.5); color: #ffd700; }
+                100% { transform: scale(1); }
+            }
+            
+            .firework {
+                position: fixed;
+                pointer-events: none;
+                animation: explode 2s ease-out forwards;
+                z-index: 100;
+            }
+            
+            @keyframes explode {
+                0% { transform: scale(0); opacity: 1; }
+                50% { transform: scale(1.5); opacity: 0.8; }
+                100% { transform: scale(0.5); opacity: 0; }
+            }
+            
+            .confetti-piece {
+                position: fixed;
+                pointer-events: none;
+                animation: confettiFall linear forwards;
+                z-index: 99;
+            }
+            
+            @keyframes confettiFall {
+                to {
+                    transform: translateY(110vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>

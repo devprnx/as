@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Texts - WhatsApp Memories</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="texts-bg">
+    <div class="chapter-page">
+        <div class="chapter-header">
+            <h1 class="chapter-title">📱 Random Texts</h1>
+            <p class="chapter-subtitle">"Jo baat face-to-face nahi hui... WhatsApp pe ho gayi 😂"</p>
+        </div>
+
+        <div class="phone-container">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="chat-header">
+                        <div class="chat-avatar">👭</div>
+                        <div class="chat-info">
+                            <h3>Archana & Saloni</h3>
+                            <p class="online-status">online</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chat-container">
+                        <!-- Messages will be added here dynamically -->
+                    </div>
+
+                    <div class="typing-indicator" id="typing" style="display: none;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="completion-message" id="completion-msg" style="display: none;">
+            <h3>✨ Conversation Complete! ✨</h3>
+            <p>These random texts... they became the foundation 💬</p>
+            <a href="../index.html" class="back-button">Return to Memory Room 🏠</a>
+        </div>
+
+        <div class="interaction-hint">
+            ⏳ Wait for each message... just like real life!
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            { sender: 'saloni', text: 'Heyy! 👋', delay: 1000 },
+            { sender: 'archana', text: 'Areyy Saloni! Kaise ho? 😊', delay: 2000 },
+            { sender: 'saloni', text: 'Ekdam mast! Tu bata?', delay: 1500 },
+            { sender: 'archana', text: 'Bas yaar, same old boring life 😂', delay: 2500 },
+            { sender: 'saloni', text: 'Arre boring kyu? Kuch plan karte hain!', delay: 2000 },
+            { sender: 'archana', text: 'Haan yaar! Coffee? 😍', delay: 1800 },
+            { sender: 'saloni', text: 'Done! Weekend pe? ☕', delay: 1500 },
+            { sender: 'archana', text: 'Perfect! Excited already! 🎉', delay: 2000 },
+            { sender: 'saloni', text: 'Same here yaar! 💖', delay: 1500 },
+            { sender: 'archana', text: 'Btw... remember school days?', delay: 2500 },
+            { sender: 'saloni', text: 'Haan! Kabhi baat nahi karte the na? 😅', delay: 2000 },
+            { sender: 'archana', text: 'Exactly! Aur ab dekho... har din texts 😂', delay: 2200 },
+            { sender: 'saloni', text: 'Life is funny yaar! 🥹✨', delay: 1800 },
+            { sender: 'archana', text: 'True that! Best decision ever 💕', delay: 2000 }
+        ];
+
+        let currentMessage = 0;
+        const chatContainer = document.getElementById('chat-container');
+        const typingIndicator = document.getElementById('typing');
+
+        function addMessage(message) {
+            return new Promise((resolve) => {
+                // Show typing
+                typingIndicator.style.display = 'flex';
+                
+                setTimeout(() => {
+                    // Hide typing
+                    typingIndicator.style.display = 'none';
+                    
+                    // Create message bubble
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = `message ${message.sender}`;
+                    
+                    msgDiv.innerHTML = `
+                        <div class="message-bubble">
+                            <p>${message.text}</p>
+                            <span class="message-time">${getCurrentTime()}</span>
+                            <span class="read-tick">✓✓</span>
+                        </div>
+                    `;
+                    
+                    chatContainer.appendChild(msgDiv);
+                    msgDiv.style.animation = 'slideInMessage 0.3s ease-out';
+                    
+                    // Scroll to bottom
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    
+                    resolve();
+                }, message.delay);
+            });
+        }
+
+        function getCurrentTime() {
+            const now = new Date();
+            return now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0');
+        }
+
+        async function startConversation() {
+            for (let i = 0; i < messages.length; i++) {
+                await addMessage(messages[i]);
+                currentMessage++;
+            }
+            
+            // Complete chapter
+            setTimeout(() => {
+                document.getElementById('completion-msg').style.display = 'block';
+                document.getElementById('completion-msg').style.animation = 'zoomIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                
+                let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+                if (!completed.includes('texts')) {
+                    completed.push('texts');
+                    localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+                }
+            }, 1500);
+        }
+
+        // Start conversation after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                startConversation();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

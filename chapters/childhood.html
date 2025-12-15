@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Childhood - Silent Friends</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="childhood-bg">
+    <div class="chapter-page">
+        <div class="chapter-header">
+            <h1 class="chapter-title">📸 Childhood Memories</h1>
+            <p class="chapter-subtitle">"Kabhi baat nahi hui... par kahani tab bhi shuru ho chuki thi."</p>
+        </div>
+
+        <div class="notebook-container">
+            <div class="notebook">
+                <div class="notebook-page">
+                    <div class="page-content" id="page-content">
+                        <h2 class="handwriting">Silent Friends 🧸</h2>
+                        <p class="handwriting-text">
+                            School ke din...<br>
+                            Ek dusre ko dekhte the,<br>
+                            Smile karte the,<br>
+                            Par kabhi baat nahi ki.<br><br>
+                            
+                            Classrooms mein same bench nahi thi,<br>
+                            Breaks mein alag groups the,<br>
+                            Par phir bhi...<br>
+                            Ek connection tha. ✨
+                        </p>
+
+                        <div class="hidden-message" id="hidden-msg">
+                            <p class="fade-text">
+                                "Kuch dosti shabd se nahi,<br>
+                                Silence se banti hai... 🥹💖"
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="photo-gallery" id="photo-gallery">
+                        <p class="gallery-instruction">Click each faded photo to reveal... 👇</p>
+                        <div class="photo-grid">
+                            <div class="photo-item blurred" data-photo="1" onclick="revealPhoto(1)">
+                                <div class="photo-content">🎒</div>
+                                <p class="photo-caption">School Days</p>
+                            </div>
+                            <div class="photo-item blurred" data-photo="2" onclick="revealPhoto(2)">
+                                <div class="photo-content">📚</div>
+                                <p class="photo-caption">Same Books</p>
+                            </div>
+                            <div class="photo-item blurred" data-photo="3" onclick="revealPhoto(3)">
+                                <div class="photo-content">🎨</div>
+                                <p class="photo-caption">Art Class</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="completion-message" id="completion-msg" style="display: none;">
+            <h3>✨ Chapter Complete! ✨</h3>
+            <p>You've unlocked the next memory...</p>
+            <a href="../index.html" class="back-button">Return to Memory Room 🏠</a>
+        </div>
+
+        <div class="interaction-hint" id="hint">
+            💡 Hover over the page for 5 seconds to reveal something special...
+        </div>
+    </div>
+
+    <script>
+        let photosRevealed = 0;
+        let hoverTimer = null;
+        let messageRevealed = false;
+
+        // Hover to reveal hidden message
+        const pageContent = document.getElementById('page-content');
+        const hiddenMsg = document.getElementById('hidden-msg');
+        const hint = document.getElementById('hint');
+
+        pageContent.addEventListener('mouseenter', () => {
+            hoverTimer = setTimeout(() => {
+                if (!messageRevealed) {
+                    hiddenMsg.style.display = 'block';
+                    hiddenMsg.style.animation = 'fadeInUp 2s ease-out';
+                    messageRevealed = true;
+                    hint.style.display = 'none';
+                }
+            }, 5000);
+        });
+
+        pageContent.addEventListener('mouseleave', () => {
+            if (hoverTimer) {
+                clearTimeout(hoverTimer);
+            }
+        });
+
+        // Reveal photos
+        function revealPhoto(num) {
+            const photo = document.querySelector(`[data-photo="${num}"]`);
+            if (photo && photo.classList.contains('blurred')) {
+                photo.classList.remove('blurred');
+                photo.classList.add('revealed');
+                photosRevealed++;
+
+                if (photosRevealed === 3) {
+                    completeChapter();
+                }
+            }
+        }
+
+        function completeChapter() {
+            setTimeout(() => {
+                document.getElementById('completion-msg').style.display = 'block';
+                document.getElementById('completion-msg').style.animation = 'zoomIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                
+                // Mark chapter as complete
+                if (window.opener && window.opener.markChapterComplete) {
+                    window.opener.markChapterComplete('childhood');
+                } else {
+                    // Fallback for direct navigation
+                    let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+                    if (!completed.includes('childhood')) {
+                        completed.push('childhood');
+                        localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+                    }
+                }
+            }, 1000);
+        }
+
+        // Auto-scroll page turn effect
+        window.addEventListener('load', () => {
+            document.querySelector('.notebook').style.animation = 'pageOpen 2s ease-out';
+        });
+    </script>
+</body>
+</html>

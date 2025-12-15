@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhaiya ki Shaadi - Family Celebration</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="chapters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="wedding-bg">
+    <div class="chapter-page">
+        <div class="chapter-header">
+            <h1 class="chapter-title">💐 Bhaiya ki Shaadi</h1>
+            <p class="chapter-subtitle">"Bhaiya ki shaadi pe... ek naya rishta aur strong hua! 💕"</p>
+        </div>
+
+        <div class="wedding-invite-container" id="invite-container">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+                <div class="tap-hint">✨ Click to open ✨</div>
+            </div>
+
+            <div class="invitation-card" id="invitation" style="display: none;">
+                <div class="card-border">
+                    <div class="card-header">
+                        <h2>💐 Wedding Invitation 💐</h2>
+                        <p class="date">A Day to Remember</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="invitation-text">
+                            Bhaiya ki shaadi... 🎊<br>
+                            Rang, gaane, naachna, masti!<br>
+                            Family time, celebrations, aur bahut saari photos! 📸<br><br>
+                            But the real magic was...<br>
+                            Being there together,<br>
+                            Sharing this beautiful moment,<br>
+                            Making memories for a lifetime! 💖✨
+                        </p>
+                    </div>
+                    <button class="reveal-photos-btn" onclick="revealGallery()">
+                        View Photos 📸
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="wedding-gallery" id="wedding-gallery" style="display: none;">
+            <h3 class="gallery-title">Wedding Moments 💫</h3>
+            <p class="gallery-instruction">Click each blurred photo to clear it...</p>
+            
+            <div class="photo-grid">
+                <div class="wedding-photo blurred" data-photo="1" onclick="clearPhoto(1)">
+                    <div class="photo-emoji">🎉</div>
+                    <p class="photo-label">Celebration</p>
+                </div>
+                <div class="wedding-photo blurred" data-photo="2" onclick="clearPhoto(2)">
+                    <div class="photo-emoji">💃</div>
+                    <p class="photo-label">Dancing</p>
+                </div>
+                <div class="wedding-photo blurred" data-photo="3" onclick="clearPhoto(3)">
+                    <div class="photo-emoji">🤳</div>
+                    <p class="photo-label">Selfies</p>
+                </div>
+                <div class="wedding-photo blurred" data-photo="4" onclick="clearPhoto(4)">
+                    <div class="photo-emoji">🍰</div>
+                    <p class="photo-label">Food Time</p>
+                </div>
+                <div class="wedding-photo blurred" data-photo="5" onclick="clearPhoto(5)">
+                    <div class="photo-emoji">👯‍♀️</div>
+                    <p class="photo-label">Together</p>
+                </div>
+                <div class="wedding-photo blurred" data-photo="6" onclick="clearPhoto(6)">
+                    <div class="photo-emoji">✨</div>
+                    <p class="photo-label">Memories</p>
+                </div>
+            </div>
+
+            <div class="hidden-text" id="hidden-text" style="display: none;">
+                <p class="special-message">
+                    "Bhaiya ki shaadi pe...<br>
+                    Family ke saath, friends ke saath,<br>
+                    Har pal special tha! 💖"<br><br>
+                    <em>Some celebrations bring everyone closer... 🥹✨</em>
+                </p>
+            </div>
+        </div>
+
+        <div class="completion-message" id="completion-msg" style="display: none;">
+            <h3>✨ Wedding Chapter Complete! ✨</h3>
+            <p>These memories will stay forever... 💕</p>
+            <a href="../index.html" class="back-button">Return to Memory Room 🏠</a>
+        </div>
+    </div>
+
+    <script>
+        let musicPlaying = false;
+        let photosCleared = 0;
+
+        // Open envelope
+        document.getElementById('envelope').addEventListener('click', function() {
+            this.classList.add('opening');
+            
+            setTimeout(() => {
+                this.style.display = 'none';
+                document.getElementById('invitation').style.display = 'block';
+                document.getElementById('invitation').style.animation = 'slideInUp 1s ease-out';
+                
+                // Play "music" (simple tone)
+                if (!musicPlaying) {
+                    playWeddingMusic();
+                    musicPlaying = true;
+                }
+            }, 1500);
+        });
+
+        // Shake envelope on hover
+        document.getElementById('envelope').addEventListener('mouseenter', function() {
+            if (!this.classList.contains('opening')) {
+                this.style.animation = 'shake 0.5s';
+            }
+        });
+
+        document.getElementById('envelope').addEventListener('mouseleave', function() {
+            this.style.animation = '';
+        });
+
+        function revealGallery() {
+            document.getElementById('wedding-gallery').style.display = 'block';
+            document.getElementById('wedding-gallery').style.animation = 'fadeIn 1s';
+            
+            // Scroll to gallery
+            document.getElementById('wedding-gallery').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function clearPhoto(num) {
+            const photo = document.querySelector(`[data-photo="${num}"]`);
+            if (photo && photo.classList.contains('blurred')) {
+                photo.classList.remove('blurred');
+                photo.classList.add('cleared');
+                photosCleared++;
+
+                if (photosCleared === 6) {
+                    setTimeout(() => {
+                        document.getElementById('hidden-text').style.display = 'block';
+                        document.getElementById('hidden-text').style.animation = 'fadeInUp 2s ease-out';
+                        
+                        setTimeout(() => {
+                            completeChapter();
+                        }, 2000);
+                    }, 500);
+                }
+            }
+        }
+
+        function completeChapter() {
+            document.getElementById('completion-msg').style.display = 'block';
+            document.getElementById('completion-msg').style.animation = 'zoomIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            
+            let completed = JSON.parse(localStorage.getItem('chaptersCompleted')) || [];
+            if (!completed.includes('wedding')) {
+                completed.push('wedding');
+                localStorage.setItem('chaptersCompleted', JSON.stringify(completed));
+            }
+        }
+
+        function playWeddingMusic() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const notes = [523, 587, 659, 698, 784, 880, 988]; // C major scale
+            
+            let noteIndex = 0;
+            const playNote = () => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(notes[noteIndex % notes.length], audioContext.currentTime);
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.5);
+                
+                noteIndex++;
+                if (noteIndex < 14) {
+                    setTimeout(playNote, 300);
+                }
+            };
+            
+            playNote();
+        }
+    </script>
+</body>
+</html>
