@@ -36,6 +36,25 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add floating particles
     createFloatingHearts();
+    
+    // Start background music from 18 seconds
+    const bgm = document.getElementById('bgm');
+    const bgm2 = document.getElementById('bgm2');
+    
+    if (bgm && bgm2) {
+        bgm.currentTime = 18;
+        bgm.volume = 0.3;
+        bgm2.volume = 0.3;
+        
+        // Play second song when first song ends
+        bgm.addEventListener('ended', () => {
+            bgm2.play();
+        });
+        
+        bgm.play().catch(err => {
+            console.log('Autoplay prevented. User interaction required.');
+        });
+    }
 });
 
 function initializeGame() {

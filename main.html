@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archana & Saloni - Happy New Year 2026! 💖</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hidden Hearts for Memory Hunt -->
+    <div class="memory-hunt-counter">
+        <span>💕 Hearts Found: <span id="hearts-found">0</span>/15</span>
+    </div>
+
+    <!-- Main Memory Room -->
+    <div class="memory-room">
+        <h1 class="room-title">
+            <span class="sparkle">✨</span>
+            Memory Room
+            <span class="sparkle">✨</span>
+        </h1>
+        <p class="room-subtitle">Bas scroll mat karo yaar... explore karo, vibe lo 💫</p>
+
+        <!-- Interactive Objects Grid -->
+        <div class="objects-container">
+            
+            <!-- 1. Photo Frame - Childhood -->
+            <div class="object-item" id="obj-childhood" data-chapter="childhood">
+                <div class="object-icon">📸</div>
+                <p class="object-label">Photo Frame</p>
+                <p class="object-hint">School Wale Din</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="1">💕</div>
+            </div>
+
+            <!-- 2. Phone - Random Text -->
+            <div class="object-item locked" id="obj-texts" data-chapter="texts">
+                <div class="object-icon">📱</div>
+                <p class="object-label">Phone</p>
+                <p class="object-hint">Random Bakchodi</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="2">💕</div>
+            </div>
+
+            <!-- 3. Window - Late Night -->
+            <div class="object-item locked" id="obj-night" data-chapter="night">
+                <div class="object-icon">🌙</div>
+                <p class="object-label">Window</p>
+                <p class="object-hint">Raat Ke 2 Baje</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="3">💕</div>
+            </div>
+
+            <!-- 4. Diary -->
+            <div class="object-item locked" id="obj-diary" data-chapter="diary">
+                <div class="object-icon">📖</div>
+                <p class="object-label">Diary</p>
+                <p class="object-hint">Dil Ki Baatein</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="4">💕</div>
+            </div>
+
+            <!-- 5. Calendar - New Year -->
+            <div class="object-item locked" id="obj-newyear" data-chapter="newyear">
+                <div class="object-icon">🎆</div>
+                <p class="object-label">Calendar</p>
+                <p class="object-hint">Naya Saal 2026</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="5">💕</div>
+            </div>
+
+            <!-- 6. Group Chat - Hola Amigos -->
+            <div class="object-item locked" id="obj-hola" data-chapter="hola">
+                <div class="object-icon">🤪</div>
+                <p class="object-label">Old Group Chat</p>
+                <p class="object-hint">Hola Amigos</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="6">💕</div>
+            </div>
+
+            <!-- 7. Timeline -->
+            <div class="object-item locked" id="obj-timeline" data-chapter="timeline">
+                <div class="object-icon">⏳</div>
+                <p class="object-label">Timeline</p>
+                <p class="object-hint">Hamara Safar</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="7">💕</div>
+            </div>
+
+            <!-- 8. Photo Album -->
+            <div class="object-item locked" id="obj-album" data-chapter="album">
+                <div class="object-icon">📸</div>
+                <p class="object-label">Photo Album</p>
+                <p class="object-hint">Yaadein</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="8">💕</div>
+            </div>
+
+            <!-- 9. Saloni ka Ghar - New Group -->
+            <div class="object-item locked" id="obj-salonighar" data-chapter="salonighar">
+                <div class="object-icon">🏠</div>
+                <p class="object-label">New Group Chat</p>
+                <p class="object-hint">Saloni ka Ghar</p>
+                <div class="lock-icon">🔒</div>
+                <div class="hidden-heart" data-heart="9">💕</div>
+            </div>
+
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="progress-bar">
+            <div class="progress-container">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="progress-text">Journey Progress: <span id="progress-percent">0</span>%</p>
+        </div>
+
+        <!-- Hidden Stars (Easter Egg) -->
+        <div class="star-easter-egg" id="star1">⭐</div>
+        <div class="star-easter-egg" id="star2">⭐</div>
+        <div class="star-easter-egg" id="star3">⭐</div>
+        <div class="star-easter-egg" id="star4">⭐</div>
+        <div class="star-easter-egg" id="star5">⭐</div>
+    </div>
+
+    <!-- Secret Message Overlay (when all hearts found) -->
+    <div class="secret-overlay" id="secret-overlay">
+        <div class="secret-content">
+            <h2>🎊 Areee Waah! Sab Hearts Mil Gaye! 🎊</h2>
+            <p class="secret-message">
+                Agar tumne yeh dekh liya matlab...<br>
+                sachme explore kiya tumne hamari dosti ko! 🥹<br><br>
+                <em>Kuch rishte dhundhne se milte hain... not gonna lie, fr fr! ✨</em>
+            </p>
+            <button class="close-secret" onclick="closeSecret()">Chalo Aage Badhte Hain! 💫</button>
+        </div>
+    </div>
+
+    <!-- Sound Toggle -->
+    <div class="sound-toggle" id="sound-toggle">
+        🔊
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgm">
+        <source src="Dooron Dooron (PenduJatt.Com.Se).mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bgm2" loop>
+        <source src="Finding Her (Female Version)(KoshalWorld.Com).mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

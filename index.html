@@ -3,147 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archana & Saloni - Happy New Year 2026! 💖</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Welcome - Archana & Saloni 💖</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffd1dc 0%, #e0b0ff 50%, #b0e0e6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-particle {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: float-up 6s infinite ease-in-out;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Entrance Container */
+        .entrance-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .entrance-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 3px 3px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .entrance-subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .entrance-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Enter Button */
+        .enter-button {
+            display: inline-block;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            border: 3px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enter-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .enter-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .enter-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .enter-button:active {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Sparkles around button */
+        .sparkle-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: sparkle-rotate 3s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .sparkle:nth-child(1) { top: -20px; left: -20px; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: -20px; right: -20px; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: -20px; left: -20px; animation-delay: 1s; }
+        .sparkle:nth-child(4) { bottom: -20px; right: -20px; animation-delay: 1.5s; }
+
+        @keyframes sparkle-rotate {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3) rotate(180deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* Names Display */
+        .names-display {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: fade-in-up 1s ease-out;
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .name-heart {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 2rem;
+            animation: beat-heart 1.5s infinite ease-in-out;
+        }
+
+        @keyframes beat-heart {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .entrance-title {
+                font-size: 2.5rem;
+            }
+
+            .entrance-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .entrance-description {
+                font-size: 1rem;
+            }
+
+            .names-display {
+                font-size: 1.8rem;
+            }
+
+            .enter-button {
+                padding: 15px 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .entrance-container {
+                padding: 20px;
+            }
+
+            .entrance-title {
+                font-size: 2rem;
+            }
+
+            .entrance-subtitle {
+                font-size: 1rem;
+            }
+
+            .names-display {
+                font-size: 1.5rem;
+            }
+
+            .enter-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Hidden Hearts for Memory Hunt -->
-    <div class="memory-hunt-counter">
-        <span>💕 Hearts Found: <span id="hearts-found">0</span>/15</span>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <!-- Entrance Content -->
+    <div class="entrance-container">
+        <h1 class="entrance-title">💖 Memory Room 💖</h1>
+        
+        <div class="names-display">
+            Archana <span class="name-heart">💕</span> Saloni
+        </div>
+
+        <p class="entrance-subtitle">Ek Dosti Ki Kahani</p>
+        <p class="entrance-description">
+            School ke silent besties se lekar late night conversations tak...<br>
+            Yaadein, hansi, aur ek bond jo hamesha rahega. No cap! ✨
+        </p>
+
+        <div class="sparkle-container">
+            <span class="sparkle">✨</span>
+            <span class="sparkle">💫</span>
+            <span class="sparkle">⭐</span>
+            <span class="sparkle">🌟</span>
+            <a href="main.html" class="enter-button">
+                Click to Enter 🎉
+            </a>
+        </div>
     </div>
 
-    <!-- Main Memory Room -->
-    <div class="memory-room">
-        <h1 class="room-title">
-            <span class="sparkle">✨</span>
-            Memory Room
-            <span class="sparkle">✨</span>
-        </h1>
-        <p class="room-subtitle">Bas scroll mat karo yaar... explore karo, vibe lo 💫</p>
-
-        <!-- Interactive Objects Grid -->
-        <div class="objects-container">
+    <script>
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floating-hearts');
+            const hearts = ['💕', '💖', '💗', '💓', '💝', '❤️', '🧡', '💛', '💚', '💙', '💜'];
             
-            <!-- 1. Photo Frame - Childhood -->
-            <div class="object-item" id="obj-childhood" data-chapter="childhood">
-                <div class="object-icon">📸</div>
-                <p class="object-label">Photo Frame</p>
-                <p class="object-hint">School Wale Din</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="1">💕</div>
-            </div>
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart-particle';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 500);
+        }
 
-            <!-- 2. Phone - Random Text -->
-            <div class="object-item locked" id="obj-texts" data-chapter="texts">
-                <div class="object-icon">📱</div>
-                <p class="object-label">Phone</p>
-                <p class="object-hint">Random Bakchodi</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="2">💕</div>
-            </div>
+        createFloatingHearts();
 
-            <!-- 3. Window - Late Night -->
-            <div class="object-item locked" id="obj-night" data-chapter="night">
-                <div class="object-icon">🌙</div>
-                <p class="object-label">Window</p>
-                <p class="object-hint">Raat Ke 2 Baje</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="3">💕</div>
-            </div>
+        // Add sparkle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = ['✨', '💫', '⭐'][Math.floor(Math.random() * 3)];
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                sparkle.style.fontSize = '1.5rem';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '9999';
+                sparkle.style.animation = 'fade-out-up 1s ease-out forwards';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
 
-            <!-- 4. Diary -->
-            <div class="object-item locked" id="obj-diary" data-chapter="diary">
-                <div class="object-icon">📖</div>
-                <p class="object-label">Diary</p>
-                <p class="object-hint">Dil Ki Baatein</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="4">💕</div>
-            </div>
-
-            <!-- 5. Calendar - New Year -->
-            <div class="object-item locked" id="obj-newyear" data-chapter="newyear">
-                <div class="object-icon">🎆</div>
-                <p class="object-label">Calendar</p>
-                <p class="object-hint">Naya Saal 2026</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="5">💕</div>
-            </div>
-
-            <!-- 6. Group Chat - Hola Amigos -->
-            <div class="object-item locked" id="obj-hola" data-chapter="hola">
-                <div class="object-icon">🤪</div>
-                <p class="object-label">Old Group Chat</p>
-                <p class="object-hint">Hola Amigos</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="6">💕</div>
-            </div>
-
-            <!-- 7. Timeline -->
-            <div class="object-item locked" id="obj-timeline" data-chapter="timeline">
-                <div class="object-icon">⏳</div>
-                <p class="object-label">Timeline</p>
-                <p class="object-hint">Hamara Safar</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="7">💕</div>
-            </div>
-
-            <!-- 8. Photo Album -->
-            <div class="object-item locked" id="obj-album" data-chapter="album">
-                <div class="object-icon">📸</div>
-                <p class="object-label">Photo Album</p>
-                <p class="object-hint">Yaadein</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="8">💕</div>
-            </div>
-
-            <!-- 9. Saloni ka Ghar - New Group -->
-            <div class="object-item locked" id="obj-salonighar" data-chapter="salonighar">
-                <div class="object-icon">🏠</div>
-                <p class="object-label">New Group Chat</p>
-                <p class="object-hint">Saloni ka Ghar</p>
-                <div class="lock-icon">🔒</div>
-                <div class="hidden-heart" data-heart="9">💕</div>
-            </div>
-
-        </div>
-
-        <!-- Progress Indicator -->
-        <div class="progress-bar">
-            <div class="progress-container">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-            <p class="progress-text">Journey Progress: <span id="progress-percent">0</span>%</p>
-        </div>
-
-        <!-- Hidden Stars (Easter Egg) -->
-        <div class="star-easter-egg" id="star1">⭐</div>
-        <div class="star-easter-egg" id="star2">⭐</div>
-        <div class="star-easter-egg" id="star3">⭐</div>
-        <div class="star-easter-egg" id="star4">⭐</div>
-        <div class="star-easter-egg" id="star5">⭐</div>
-    </div>
-
-    <!-- Secret Message Overlay (when all hearts found) -->
-    <div class="secret-overlay" id="secret-overlay">
-        <div class="secret-content">
-            <h2>🎊 Areee Waah! Sab Hearts Mil Gaye! 🎊</h2>
-            <p class="secret-message">
-                Agar tumne yeh dekh liya matlab...<br>
-                sachme explore kiya tumne hamari dosti ko! 🥹<br><br>
-                <em>Kuch rishte dhundhne se milte hain... not gonna lie, fr fr! ✨</em>
-            </p>
-            <button class="close-secret" onclick="closeSecret()">Chalo Aage Badhte Hain! 💫</button>
-        </div>
-    </div>
-
-    <!-- Sound Toggle -->
-    <div class="sound-toggle" id="sound-toggle">
-        🔊
-    </div>
-
-    <script src="script.js"></script>
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fade-out-up {
+                to {
+                    opacity: 0;
+                    transform: translateY(-50px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
